@@ -31,14 +31,11 @@ public class MovieTheaterService {
     public static final int TOTAL_ROWS = 9;
     public static final int TOTAL_COLUMNS = 9;
     public static final String PASSWORD = "super_secret";
-    private CinemaRoom cinemaRoom;
-    private boolean isCinemaRoomEmpty = true;
+    private static CinemaRoom cinemaRoom;
     private final Map<UUID, Seat> boughtSeats = new HashMap<>();
 
     public CinemaRoom getMovieTheater() {
-        return (isCinemaRoomEmpty)
-                ? createCinemaRoom(TOTAL_ROWS, TOTAL_COLUMNS)
-                : cinemaRoom;
+        return cinemaRoom;
     }
 
     public PurchaseResponseBody buyTicket(PurchaseRequestBody purchaseRequestBody) {
@@ -88,22 +85,18 @@ public class MovieTheaterService {
         return new StatsResponseBody(currentIncome, numberOfAvailableSeats, numberOfPurchasedTickets);
     }
 
-    private CinemaRoom createCinemaRoom(int totalRows, int totalColumns) {
+    public static void createCinemaRoom() {
         int price;
-
-        isCinemaRoomEmpty = false;
 
         Table<Integer, Integer, Seat> availableSeatsTable = HashBasedTable.create();
 
-        for (int row = ROW_COLUMN_START_INDEX; row <= totalRows; row++) {
-            for (int column = ROW_COLUMN_START_INDEX; column <= totalColumns; column++) {
+        for (int row = ROW_COLUMN_START_INDEX; row <= TOTAL_ROWS; row++) {
+            for (int column = ROW_COLUMN_START_INDEX; column <= TOTAL_COLUMNS; column++) {
                 price = (row <= ROW_BOUNDARY_PRICE) ? EXPENSIVE_PRICE : CHEAP_PRICE;
                 availableSeatsTable.put(row, column, new Seat(row, column, price));
             }
         }
-
-        cinemaRoom = new CinemaRoom(totalRows, totalColumns, availableSeatsTable);
-        return cinemaRoom;
+        cinemaRoom = new CinemaRoom(TOTAL_ROWS, TOTAL_COLUMNS, availableSeatsTable);
     }
 
     private Seat vacateSeat(UUID token) throws NullPointerException, WrongTokenException {
