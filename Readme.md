@@ -36,7 +36,7 @@ Allow customers to purchase tickets
 ### POST: /return/
 Allow customers to refund their tickets
 
-**Request body example**:
+**Response body example**:
 ```
 {
 "token": "b65faeb5-b12c-47fc-871a-e1a9252c4533"
