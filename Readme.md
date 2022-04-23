@@ -55,7 +55,6 @@ As all applications this one can also be improved. Possible improvements:
     - Bought seats
 - Allow multiple cinema rooms
 - Include service tests
-- Remove or change the **stats endpoint** variable password from source code to an external config file
     
 ## Contributing 
 
