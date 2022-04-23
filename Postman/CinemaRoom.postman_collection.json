@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "f70dbab8-a46f-4d8d-8d27-eba69e095492",
+		"name": "CinemaRoom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MovieTheaterController",
+			"item": [
+				{
+					"name": "Seats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:28852/api/v1/cinema-room/seats/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "28852",
+							"path": [
+								"api",
+								"v1",
+								"cinema-room",
+								"seats",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"row\": 1,\n\"column\": 1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:28852/api/v1/cinema-room/purchase/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "28852",
+							"path": [
+								"api",
+								"v1",
+								"cinema-room",
+								"purchase",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Return",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"8dc372de-7940-4aee-a8a6-de5d84e55a0c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:28852/api/v1/cinema-room/return/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "28852",
+							"path": [
+								"api",
+								"v1",
+								"cinema-room",
+								"return",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stats",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:28852/api/v1/cinema-room/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "28852",
+							"path": [
+								"api",
+								"v1",
+								"cinema-room",
+								"stats"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "super_secret",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
