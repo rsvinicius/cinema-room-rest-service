@@ -4,7 +4,6 @@ package com.example.cinemaroomrestservice.service;
 import com.example.cinemaroomrestservice.constants.CustomExceptionMessageError;
 import com.example.cinemaroomrestservice.exception.NotFoundException;
 import com.example.cinemaroomrestservice.exception.SeatNotAvailableException;
-import com.example.cinemaroomrestservice.exception.WrongPasswordException;
 import com.example.cinemaroomrestservice.exception.WrongTokenException;
 import com.example.cinemaroomrestservice.model.entity.CinemaRoom;
 import com.example.cinemaroomrestservice.model.entity.Seat;
@@ -30,7 +29,6 @@ public class MovieTheaterService {
     public static final int ROW_COLUMN_START_INDEX = 1;
     public static final int TOTAL_ROWS = 9;
     public static final int TOTAL_COLUMNS = 9;
-    public static final String PASSWORD = "super_secret";
     private static CinemaRoom cinemaRoom;
     private final Map<UUID, Seat> boughtSeats = new HashMap<>();
 
@@ -65,10 +63,7 @@ public class MovieTheaterService {
         }
     }
 
-    public StatsResponseBody generateStats(String password) {
-        if (!PASSWORD.equals(password)) {
-            throw new WrongPasswordException(CustomExceptionMessageError.WRONG_PASSWORD);
-        }
+    public StatsResponseBody generateStats() {
 
         int totalSeats = TOTAL_ROWS * TOTAL_COLUMNS;
         int currentIncome = 0;

@@ -1,6 +1,5 @@
 package com.example.cinemaroomrestservice.controller;
 
-
 import com.example.cinemaroomrestservice.model.entity.CinemaRoom;
 import com.example.cinemaroomrestservice.model.request.PurchaseRequestBody;
 import com.example.cinemaroomrestservice.model.request.ReturnRequestBody;
@@ -12,10 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/v1/cinema-room")
 public class MovieTheaterController {
     private final MovieTheaterService movieTheaterService;
 
@@ -40,7 +40,7 @@ public class MovieTheaterController {
     }
 
     @PostMapping("/stats")
-    public StatsResponseBody postStats(@RequestParam(required = false) String password) {
-        return movieTheaterService.generateStats(password);
+    public StatsResponseBody postStats() {
+        return movieTheaterService.generateStats();
     }
 }

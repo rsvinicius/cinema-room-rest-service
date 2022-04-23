@@ -19,10 +19,10 @@ Start application in IDE or via command line:
 
 ## Endpoints
 
-### GET: /seats/
+### GET: /api/v1/cinema-room/seats/
 Returns the information about the cinema seats.
 
-### POST: /purchase/
+### POST: /api/v1/cinema-room/purchase/
 Allow customers to purchase tickets
 
 **Request body example**: 
@@ -33,7 +33,7 @@ Allow customers to purchase tickets
 }
 ```
 
-### POST: /return/
+### POST: /api/v1/cinema-room/return/
 Allow customers to refund their tickets
 
 **Response body example**:
@@ -43,12 +43,8 @@ Allow customers to refund their tickets
 }
 ```
 
-### POST: /stats/?password={{password}}
+### POST: /api/v1/cinema-room/stats/
 Show movie theater statistics
-
-**Query param**: password
-
-**Default password**: super_secret
 
 ## Possible improvements
 
